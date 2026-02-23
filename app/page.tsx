@@ -88,27 +88,61 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1100px] bg-bg-surface px-6 py-16 sm:px-8 sm:py-20">
-          <h2 className="mb-2 text-center font-serif text-4xl font-bold text-brand-orange">Why We Exist</h2>
-          <p className="mb-10 text-center text-lg italic text-text-secondary">Rebuilding journalism from the ground up</p>
+        <section className="mx-auto max-w-[1200px] px-6 py-20 sm:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 font-serif text-4xl font-bold text-brand-orange md:text-5xl">Why We Exist</h2>
+            <p className="text-base text-text-muted">Rebuilding journalism from the ground up</p>
+          </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div className="space-y-6 text-justify leading-8 text-text-secondary">
-              <p className="first-letter:float-left first-letter:mr-1 first-letter:mt-0 first-letter:font-serif first-letter:text-6xl first-letter:font-bold first-letter:leading-[0.9] first-letter:text-brand-orange">
-                African journalism stands at a crossroads. For decades, newsrooms have operated under a broken model where truth is sacrificed for advertising revenue and editorial interference. &quot;Mkubwa Anasema&quot;—&quot;the big man says so&quot;—has silenced countless stories and compromised journalistic integrity.
+          {/* Problem Statement */}
+          <div className="mb-16 bg-bg-surface border-l-4 border-brand-orange p-8 md:p-10">
+            <div className="mx-auto max-w-[900px]">
+              <h3 className="mb-6 font-serif text-2xl font-bold text-text-primary md:text-3xl">The Broken Model</h3>
+              <p className="mb-6 text-lg leading-relaxed text-text-secondary">
+                African journalism stands at a crossroads. For decades, newsrooms have operated under a model where <span className="font-semibold text-brand-orange">truth is sacrificed for advertising revenue</span> and editorial interference from powerful interests.
               </p>
-              <p>
-                Talented reporters earn poverty wages. Veterans abandon their calling. The best journalists leave the profession entirely. This financial model has failed the very people it depends on.
+              <div className="grid gap-6 md:grid-cols-3 my-8">
+                <div className="text-center p-4 bg-bg-dark rounded-lg">
+                  <div className="text-3xl font-bold text-brand-orange mb-2">Low Pay</div>
+                  <div className="text-sm text-text-muted">Poverty wages drive talent away</div>
+                </div>
+                <div className="text-center p-4 bg-bg-dark rounded-lg">
+                  <div className="text-3xl font-bold text-brand-orange mb-2">Brain Drain</div>
+                  <div className="text-sm text-text-muted">Best journalists leave profession</div>
+                </div>
+                <div className="text-center p-4 bg-bg-dark rounded-lg">
+                  <div className="text-3xl font-bold text-brand-orange mb-2">Interference</div>
+                  <div className="text-sm text-text-muted">Editorial control by owners</div>
+                </div>
+              </div>
+              <p className="text-lg leading-relaxed text-text-secondary">
+                When wealthy owners and advertisers control the purse strings, journalists cannot speak freely. This financial model has failed the very people it depends on.
               </p>
             </div>
+          </div>
 
-            <div className="space-y-6 text-justify leading-8 text-text-secondary">
-              <p>
-                Naked Journalism reimagines this relationship. No paywalls. No subscriptions. No gatekeepers. Just honest reporting supported directly by readers who value truth.
+          {/* Solution */}
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-8 border-t-4 border-brand-orange pt-8">
+              <h3 className="mb-6 font-serif text-2xl font-bold text-brand-orange md:text-3xl">Our Solution</h3>
+              <p className="mb-6 text-xl leading-relaxed text-text-primary font-medium">
+                Naked Journalism reimagines this relationship: <span className="text-brand-orange">no paywalls, no subscriptions, no gatekeepers</span>.
               </p>
-              <p>
-                Through voluntary tipping via M-Pesa, crypto, or bank transfer, readers become patrons of journalism they believe in. Every shilling goes directly to the journalist, creating sustainable income without compromising independence.
+              <p className="text-lg leading-relaxed text-text-secondary mb-8">
+                Just honest reporting supported directly by readers who value truth. Through voluntary tipping via M-Pesa, crypto, or bank transfer, every contribution goes directly to the journalist creating sustainable income without compromising independence.
               </p>
+
+              <div className="bg-brand-orange/10 border-2 border-brand-orange/30 rounded-lg p-6 md:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="text-5xl">💡</div>
+                  <div>
+                    <p className="text-lg font-semibold text-text-primary mb-2">The Result</p>
+                    <p className="text-base leading-relaxed text-text-secondary">
+                      Readers become patrons of the journalism they believe in. Journalists earn sustainable income while maintaining complete editorial independence. Truth matters more than influence.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -167,7 +201,9 @@ export default function Home() {
           <div className="mb-6 text-sm leading-7 text-white/60">
             Strengthening press freedom by redesigning its financial foundations
             <br />
-            Fred Gitonga &amp; Allan Robinson, Publishers
+            <a href="https://nakedjournalism.xyz" className="text-brand-orange hover:text-brand-orange-light transition-colors">
+              nakedjournalism.xyz
+            </a>
           </div>
           <div className="mb-8 flex flex-wrap justify-center gap-6">
             {["Twitter", "LinkedIn", "Instagram", "Contact"].map((item) => (
