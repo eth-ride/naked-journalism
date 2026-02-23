@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenneth Ochieng (@investigator_ken) - Naked Journalism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-orange: #C85A3F;
+            --brand-orange-dark: #A04830;
+            --brand-orange-light: #D97A5F;
+            --cream: #F5F1E8;
+            --cream-dark: #E8E0D0;
+            --black: #1A1A1A;
+            --gray: #6B6B6B;
+            --gray-light: #A8A8A8;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            border-bottom: 3px solid var(--brand-orange);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(200, 90, 63, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-button {
+            color: var(--brand-orange);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .wordmark {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--brand-orange);
+            letter-spacing: 1px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cta-button {
+            background: var(--brand-orange);
+            color: var(--white);
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--brand-orange-dark);
+            transform: translateY(-1px);
+        }
+
+        .profile-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            border-left: 1px solid var(--cream-dark);
+            border-right: 1px solid var(--cream-dark);
+            min-height: calc(100vh - 75px);
+        }
+
+        .profile-banner {
+            width: 100%;
+            height: 220px;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12) 0 18%, transparent 19%),
+                radial-gradient(circle at 80% 65%, rgba(255,255,255,0.10) 0 14%, transparent 15%),
+                linear-gradient(135deg, var(--brand-orange-dark), var(--brand-orange), var(--brand-orange-light));
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .profile-header {
+            padding: 0 2rem 1.5rem;
+            position: relative;
+        }
+
+        .profile-avatar-container {
+            position: relative;
+            margin-top: -76px;
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--brand-orange);
+            border: 6px solid var(--white);
+            box-shadow: 0 8px 24px rgba(26, 26, 26, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .profile-name-section {
+            margin-bottom: 1rem;
+        }
+
+        .profile-name {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-name h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .verified-badge {
+            width: 20px;
+            height: 20px;
+            color: var(--brand-orange);
+        }
+
+        .profile-username {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .profile-bio {
+            color: var(--black);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .profile-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .metadata-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--brand-orange);
+            flex-shrink: 0;
+        }
+
+        .metadata-link {
+            color: var(--brand-orange);
+            text-decoration: none;
+        }
+
+        .metadata-link:hover {
+            text-decoration: underline;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            gap: 0.4rem;
+            align-items: baseline;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .stat-label {
+            color: var(--gray);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--cream-dark);
+            background: var(--white);
+            color: var(--black);
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .action-button:hover {
+            background: var(--cream);
+            border-color: var(--brand-orange-light);
+        }
+
+        .action-button.primary {
+            background: var(--brand-orange);
+            border-color: var(--brand-orange);
+            color: var(--white);
+        }
+
+        .action-button.primary:hover {
+            background: var(--brand-orange-dark);
+            border-color: var(--brand-orange-dark);
+        }
+
+        .action-button.tip {
+            color: var(--brand-orange);
+            border-color: rgba(200, 90, 63, 0.35);
+        }
+
+        .action-button.tip:hover {
+            background: rgba(200, 90, 63, 0.08);
+            border-color: var(--brand-orange);
+        }
+
+        .action-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .profile-tabs {
+            display: flex;
+            border-top: 1px solid var(--cream-dark);
+            border-bottom: 2px solid var(--cream-dark);
+            padding: 0 2rem;
+            background: var(--white);
+            position: sticky;
+            top: 75px;
+            z-index: 500;
+        }
+
+        .profile-tab {
+            flex: 1;
+            padding: 1rem 0;
+            text-align: center;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .profile-tab.active {
+            color: var(--brand-orange);
+            border-bottom-color: var(--brand-orange);
+        }
+
+        .profile-tab:hover {
+            color: var(--brand-orange);
+            background: rgba(200, 90, 63, 0.04);
+        }
+
+        .posts-section {
+            border-top: none;
+            background: var(--white);
+        }
+
+        .post-card {
+            background: var(--white);
+            border-bottom: 1px solid var(--cream-dark);
+            padding: 1.5rem 2rem;
+            transition: background 0.2s;
+        }
+
+        .post-card:hover {
+            background: #fbf8f2;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--brand-orange);
+            border: 2px solid var(--brand-orange-dark);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .post-info {
+            flex: 1;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+        }
+
+        .post-text {
+            color: var(--black);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .article-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 8px;
+        }
+
+        .article-link:focus-visible {
+            outline: 3px solid rgba(200, 90, 63, 0.35);
+            outline-offset: 3px;
+        }
+
+        .article-card {
+            border: 2px solid var(--cream-dark);
+            border-left: 4px solid var(--brand-orange);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            background: var(--cream);
+        }
+
+        .article-card:hover {
+            border-left-color: var(--brand-orange-dark);
+            box-shadow: 0 4px 20px rgba(200, 90, 63, 0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--brand-orange-dark), var(--brand-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .article-icon {
+            width: 72px;
+            height: 72px;
+            opacity: 0.5;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            background: var(--white);
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .read-time {
+            color: var(--brand-orange);
+            font-weight: 600;
+        }
+
+        .engagement-bar {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .engagement-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .engagement-button:hover {
+            background: var(--cream);
+            color: var(--black);
+        }
+
+        .engagement-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .engagement-button.tip-button:hover {
+            color: var(--brand-orange);
+        }
+
+        .engagement-count {
+            font-weight: 700;
+        }
+
+        .tip-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tip-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            z-index: 2000;
+        }
+
+        .tip-modal-backdrop.open {
+            display: flex;
+        }
+
+        .tip-modal {
+            width: min(560px, 100%);
+            background: var(--white);
+            border: 2px solid var(--cream-dark);
+            border-top: 4px solid var(--brand-orange);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(26, 26, 26, 0.18);
+            overflow: hidden;
+        }
+
+        .tip-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1rem 0.75rem;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .tip-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+        }
+
+        .tip-modal-subtitle {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .tip-modal-close {
+            background: transparent;
+            border: 1px solid var(--cream-dark);
+            color: var(--gray);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .tip-modal-close:hover {
+            background: var(--cream);
+            color: var(--black);
+        }
+
+        .tip-modal-body {
+            padding: 1rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .payment-option {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 44px 1fr auto;
+            gap: 0.75rem;
+            align-items: center;
+            text-align: left;
+            border: 2px solid var(--cream-dark);
+            border-radius: 10px;
+            background: var(--white);
+            padding: 0.85rem 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-option:hover {
+            border-color: rgba(200, 90, 63, 0.35);
+            background: #fcfaf6;
+            transform: translateY(-1px);
+        }
+
+        .payment-option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            color: var(--brand-orange);
+        }
+
+        .payment-option-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .payment-option-icon .metamask-mark {
+            width: 26px;
+            height: 26px;
+            display: block;
+        }
+
+        .payment-option-icon .mpesa-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 34px;
+            height: 22px;
+            padding: 0 4px;
+            border-radius: 6px;
+            background: var(--white);
+            border: 1px solid rgba(0, 166, 81, 0.22);
+            position: relative;
+        }
+
+        .payment-option-icon .mpesa-mark::after {
+            content: "";
+            position: absolute;
+            right: 3px;
+            top: 4px;
+            width: 7px;
+            height: 2px;
+            background: #e60012;
+            border-radius: 2px;
+            transform: rotate(-24deg);
+            transform-origin: right center;
+            opacity: 0.95;
+        }
+
+        .payment-option-icon .mpesa-wordmark {
+            color: #00a651;
+            font-weight: 800;
+            font-size: 7px;
+            letter-spacing: 0.3px;
+            line-height: 1;
+            transform: translateX(-1px);
+        }
+
+        .payment-option-copy strong {
+            display: block;
+            color: var(--black);
+            font-size: 0.95rem;
+        }
+
+        .payment-option-copy span {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .payment-option-badges {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gray);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .card-badge {
+            border-radius: 999px;
+            padding: 0.2rem 0.45rem;
+            border: 1px solid var(--cream-dark);
+            background: var(--white);
+        }
+
+        .mc-mark {
+            width: 28px;
+            height: 18px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .mc-mark::before,
+        .mc-mark::after {
+            content: "";
+            position: absolute;
+            top: 1px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .mc-mark::before {
+            left: 2px;
+            background: #eb001b;
+            opacity: 0.9;
+        }
+
+        .mc-mark::after {
+            right: 2px;
+            background: #f79e1b;
+            opacity: 0.9;
+        }
+
+        .visa-word {
+            color: #1a1f71;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .mpesa-badge {
+            color: #00a651;
+            border-color: rgba(0, 166, 81, 0.25);
+            background: #f3fff8;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .profile-banner {
+                height: 170px;
+            }
+
+            .profile-header {
+                padding: 0 1rem 1.25rem;
+            }
+
+            .profile-avatar {
+                width: 112px;
+                height: 112px;
+                font-size: 2rem;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+            }
+
+            .profile-tabs {
+                padding: 0 0.75rem;
+                top: 71px;
+                overflow-x: auto;
+            }
+
+            .profile-tab {
+                min-width: 90px;
+                font-size: 0.9rem;
+            }
+
+            .post-card {
+                padding: 1.25rem 1rem;
+            }
+
+            .engagement-bar {
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+
+            .engagement-button {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .engagement-button span:not(.engagement-count) {
+                display: none;
+            }
+
+            .payment-option {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .payment-option-badges {
+                grid-column: 1 / -1;
+                margin-left: calc(40px + 0.75rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="feed.html" class="back-button">← Back</a>
+            <a class="logo-container" href="feed.html" aria-label="Go to feed">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="30" width="80" height="55" rx="8" fill="#C85A3F"/>
+                    <circle cx="50" cy="57" r="18" fill="#E8E0D0"/>
+                    <circle cx="50" cy="57" r="12" fill="#C85A3F"/>
+                    <circle cx="50" cy="57" r="6" fill="#E8E0D0"/>
+                    <rect x="30" y="20" width="40" height="12" rx="6" fill="#C85A3F"/>
+                    <circle cx="75" cy="40" r="4" fill="#E8E0D0"/>
+                </svg>
+                <span class="wordmark">NAKED JOURNALISM</span>
+            </a>
+        </div>
+        <div class="nav-actions">
+            <button class="cta-button">Follow</button>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-banner"></div>
+
+        <div class="profile-header">
+            <div class="profile-avatar-container">
+                <div class="profile-avatar">KO</div>
+            </div>
+
+            <div class="profile-name-section">
+                <div class="profile-name">
+                    <h1>Kenneth Ochieng</h1>
+                    <svg class="verified-badge" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="profile-username">@investigator_ken</div>
+            </div>
+
+            <p class="profile-bio">Investigative journalist covering government accountability, corruption, and public finance across East Africa. Based in Nairobi. Truth over influence.</p>
+
+            <div class="profile-metadata">
+                <div class="metadata-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <span>Nairobi, Kenya</span>
+                </div>
+                <div class="metadata-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 007.07 0l1.41-1.41a5 5 0 00-7.07-7.07L10 5"/>
+                        <path d="M14 11a5 5 0 01-7.07 0L5.52 9.59a5 5 0 017.07-7.07L14 4"/>
+                    </svg>
+                    <a href="#" class="metadata-link">kenochieng.com</a>
+                </div>
+                <div class="metadata-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"/>
+                    </svg>
+                    <span>Joined February 2026</span>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-value">12.5k</span>
+                    <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">892</span>
+                    <span class="stat-label">Following</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">$2,345</span>
+                    <span class="stat-label">Tips Received</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="action-button primary" type="button">Following</button>
+                <button class="action-button tip tip-trigger" type="button" aria-haspopup="dialog" aria-controls="tip-modal">
+                    <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M14.8 8.8c0-1.2-1.25-2.05-2.8-2.05s-2.8.85-2.8 2.05 1.25 2.05 2.8 2.05 2.8.85 2.8 2.05-1.25 2.05-2.8 2.05-2.8-.85-2.8-2.05"/>
+                        <path d="M12 5.6v12.8"/>
+                    </svg>
+                    Tip
+                </button>
+                <button class="action-button" type="button">Message</button>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <div class="profile-tab active">Posts</div>
+            <div class="profile-tab">Articles</div>
+            <div class="profile-tab">Media</div>
+            <div class="profile-tab">Funded</div>
+        </div>
+
+        <div class="posts-section">
+            <article class="post-card">
+                <div class="post-header">
+                    <div class="post-avatar">KO</div>
+                    <div class="post-info">
+                        <div class="post-meta">
+                            <span>@investigator_ken</span>
+                            <span>•</span>
+                            <span>3h ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="post-text">Breaking: Six-month investigation reveals systematic budget mismanagement in County X. Follow the money trail from public coffers to private accounts.</p>
+                    <a class="article-link" href="article.html" aria-label="Read article: Uncovering Budget Mismanagement in County X">
+                        <div class="article-card">
+                            <div class="article-image">
+                                <svg class="article-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                                </svg>
+                            </div>
+                            <div class="article-content">
+                                <h3 class="article-title">Uncovering Budget Mismanagement in County X</h3>
+                                <p class="article-excerpt">A deep dive into financial records reveals how Ksh 450 million in public funds were diverted through shell companies, leaving essential services unfunded while officials prospered.</p>
+                                <div class="article-meta">
+                                    <span>Investigative Report</span>
+                                    <span>•</span>
+                                    <span class="read-time">12 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="engagement-bar">
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                        </svg>
+                        <span class="engagement-count">245</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        <span class="engagement-count">67</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/>
+                        </svg>
+                        <span class="engagement-count">89</span>
+                    </button>
+                    <button class="engagement-button tip-button tip-trigger" type="button" aria-haspopup="dialog" aria-controls="tip-modal">
+                        <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M14.8 8.8c0-1.2-1.25-2.05-2.8-2.05s-2.8.85-2.8 2.05 1.25 2.05 2.8 2.05 2.8.85 2.8 2.05-1.25 2.05-2.8 2.05-2.8-.85-2.8-2.05"/>
+                            <path d="M12 5.6v12.8"/>
+                        </svg>
+                        <span>Tip</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+                        </svg>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-header">
+                    <div class="post-avatar">KO</div>
+                    <div class="post-info">
+                        <div class="post-meta">
+                            <span>@investigator_ken</span>
+                            <span>•</span>
+                            <span>2d ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="post-text">The numbers don't lie: Public procurement contracts awarded in Q4 2025 show clear patterns of favoritism. Thread 🧵<br><br>
+                        1. 78% of contracts went to companies registered within 6 months of tender announcements<br>
+                        2. Average contract value: 340% above market rates<br>
+                        3. Only 12% of suppliers had prior relevant experience<br><br>
+                        Full report with documentation dropping tomorrow.</p>
+                </div>
+                <div class="engagement-bar">
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                        </svg>
+                        <span class="engagement-count">156</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        <span class="engagement-count">34</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/>
+                        </svg>
+                        <span class="engagement-count">67</span>
+                    </button>
+                    <button class="engagement-button tip-button tip-trigger" type="button" aria-haspopup="dialog" aria-controls="tip-modal">
+                        <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M14.8 8.8c0-1.2-1.25-2.05-2.8-2.05s-2.8.85-2.8 2.05 1.25 2.05 2.8 2.05 2.8.85 2.8 2.05-1.25 2.05-2.8 2.05-2.8-.85-2.8-2.05"/>
+                            <path d="M12 5.6v12.8"/>
+                        </svg>
+                        <span>Tip</span>
+                    </button>
+                    <button class="engagement-button" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+                        </svg>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="tip-modal-backdrop" id="tip-modal" role="dialog" aria-modal="true" aria-labelledby="tip-modal-title" aria-hidden="true">
+        <div class="tip-modal">
+            <div class="tip-modal-header">
+                <div>
+                    <h2 class="tip-modal-title" id="tip-modal-title">Support Kenneth Ochieng</h2>
+                    <p class="tip-modal-subtitle">Choose a payment method to send a tip securely.</p>
+                </div>
+                <button class="tip-modal-close" type="button" id="tip-modal-close" aria-label="Close tip options">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="tip-modal-body">
+                <button class="payment-option" type="button">
+                    <span class="payment-option-icon" aria-hidden="true">
+                        <svg class="metamask-mark" viewBox="0 0 24 24">
+                            <polygon points="12,2.1 6.8,5.7 8.6,10.2 12,8.4 15.4,10.2 17.2,5.7" fill="#ff5c16"/>
+                            <polygon points="8.6,10.2 6.8,5.7 5.5,9.9 8.5,12.1" fill="#c24e14"/>
+                            <polygon points="15.4,10.2 17.2,5.7 18.5,9.9 15.5,12.1" fill="#d85a17"/>
+                            <polygon points="8.5,12.1 10.2,15.7 12,14.7 13.8,15.7 15.5,12.1 12,13.1" fill="#763d16"/>
+                            <polygon points="10.2,15.7 9,18.8 12,17.3 15,18.8 13.8,15.7 12,16.6" fill="#f7c7a6"/>
+                            <polygon points="12,8.4 10.9,10.7 12,11.5 13.1,10.7" fill="#2f2f2f"/>
+                        </svg>
+                    </span>
+                    <span class="payment-option-copy">
+                        <strong>Crypto Payment</strong>
+                        <span>Pay with wallet connection (MetaMask supported)</span>
+                    </span>
+                    <span class="payment-option-badges">
+                        <span class="card-badge">MetaMask</span>
+                    </span>
+                </button>
+
+                <button class="payment-option" type="button">
+                    <span class="payment-option-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2.5" y="5" width="19" height="14" rx="2"/>
+                            <path d="M2.5 10h19"/>
+                            <path d="M7 15h3"/>
+                        </svg>
+                    </span>
+                    <span class="payment-option-copy">
+                        <strong>Global Bank Payments</strong>
+                        <span>International card checkout for Visa and Mastercard</span>
+                    </span>
+                    <span class="payment-option-badges" aria-hidden="true">
+                        <span class="card-badge visa-word">VISA</span>
+                        <span class="card-badge"><span class="mc-mark"></span></span>
+                    </span>
+                </button>
+
+                <button class="payment-option" type="button">
+                    <span class="payment-option-icon" aria-hidden="true" style="color:#00a651;">
+                        <span class="mpesa-mark">
+                            <span class="mpesa-wordmark">M-PESA</span>
+                        </span>
+                    </span>
+                    <span class="payment-option-copy">
+                        <strong>M-Pesa</strong>
+                        <span>Send directly via mobile money in Kenya</span>
+                    </span>
+                    <span class="payment-option-badges">
+                        <span class="card-badge mpesa-badge">M-PESA</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById('tip-modal');
+            var closeButton = document.getElementById('tip-modal-close');
+            var triggers = document.querySelectorAll('.tip-trigger');
+
+            if (!modal || !closeButton || !triggers.length) return;
+
+            function openModal() {
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                closeButton.focus();
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+            }
+
+            triggers.forEach(function (button) {
+                button.addEventListener('click', openModal);
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && modal.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
